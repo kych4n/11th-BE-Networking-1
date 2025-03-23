@@ -1,7 +1,11 @@
 package racingcar;
 
+import racingcar.api.RacingGameController;
+import racingcar.api.console.RacingGameConsoleController;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingGameController racingGameController = new RacingGameConsoleController();
+        racingGameController.start();
     }
 }
