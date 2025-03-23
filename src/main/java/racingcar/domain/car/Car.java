@@ -29,7 +29,7 @@ public class Car {
         if (Randoms.pickNumberInRange(
                 ForwardConstraint.RANDOM_LOWER_BOUND.value(),
                 ForwardConstraint.RANDOM_UPPER_BOUND.value()
-        ) > ForwardConstraint.FORWARD_THRESHOLD.value()) {
+        ) >= ForwardConstraint.FORWARD_THRESHOLD.value()) {
             this.location.increase(this.speed.value());
         }
     }
