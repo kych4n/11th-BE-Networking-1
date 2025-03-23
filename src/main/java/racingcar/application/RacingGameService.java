@@ -11,6 +11,7 @@ import racingcar.domain.car.CarName;
 import racingcar.dto.request.ParticipantsRequest;
 import racingcar.dto.request.TrialCountRequest;
 import racingcar.dto.response.ExecutionResultsResponse;
+import racingcar.dto.response.WinnersResponse;
 import racingcar.persistence.CarMemoryRepository;
 import racingcar.persistence.CarRepository;
 
@@ -33,5 +34,11 @@ public class RacingGameService {
                 })
         );
         return ExecutionResultsResponse.of(executionResults);
+    }
+
+    public WinnersResponse determineWinners() {
+        List<Car> cars = carRepository.findAll();
+        int maxLocation = cars.stream().mapToInt(car -> car.location().value()).max().getAsInt();
+        return WinnersResponse.of(cars.stream().filter(car -> car.location().value() == maxLocation).toList());
     }
 }
