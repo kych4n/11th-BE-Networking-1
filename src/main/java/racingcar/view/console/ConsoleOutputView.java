@@ -1,8 +1,11 @@
 package racingcar.view.console;
 
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import racingcar.domain.car.CarName;
 import racingcar.dto.request.TrialCountRequest;
 import racingcar.dto.response.ExecutionResultsResponse;
+import racingcar.dto.response.WinnersResponse;
 import racingcar.global.message.OutputMessage;
 import racingcar.view.OutputView;
 
@@ -19,5 +22,13 @@ public class ConsoleOutputView implements OutputView {
                     System.out.println();
                 }
         );
+    }
+
+    @Override
+    public void printWinners(WinnersResponse winners) {
+        final String SEPARATOR = ", ";
+        System.out.printf("%s : %s", OutputMessage.FINAL_WINNER.message(),
+                winners.winners().stream().map(CarName::name).collect(Collectors.joining(SEPARATOR)));
+        System.out.println();
     }
 }
