@@ -2,7 +2,7 @@ package racingcar.global.exception;
 
 import racingcar.global.message.ErrorMessage;
 
-public class TrialCountInvalidException extends RuntimeException {
+public class TrialCountInvalidException extends IllegalArgumentException {
     public TrialCountInvalidException(ErrorMessage errorMessage) {
         super(errorMessage.message());
     }

@@ -2,7 +2,7 @@ package racingcar.global.exception;
 
 import racingcar.global.message.ErrorMessage;
 
-public class CarNameLengthExceededException extends RuntimeException {
+public class CarNameLengthExceededException extends IllegalArgumentException {
     public CarNameLengthExceededException(ErrorMessage errorMessage) {
         super(errorMessage.message());
     }
