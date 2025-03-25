@@ -5,7 +5,7 @@ import java.util.List;
 import racingcar.domain.car.Car;
 
 public class CarMemoryRepository implements CarRepository {
-    private final List<Car> cars = new ArrayList<>();
+    private static final List<Car> cars = new ArrayList<>();
 
     @Override
     public void save(Car car) {
@@ -14,6 +14,6 @@ public class CarMemoryRepository implements CarRepository {
 
     @Override
     public List<Car> findAll() {
-        return this.cars;
+        return cars;
     }
 }
