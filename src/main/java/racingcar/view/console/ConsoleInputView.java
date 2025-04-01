@@ -9,13 +9,14 @@ import racingcar.dto.request.TrialCountRequest;
 import racingcar.global.exception.CarNamesDuplicatedException;
 import racingcar.global.message.InputMessage;
 import racingcar.view.InputView;
+import racingcar.view.ViewConstant;
 
 public class ConsoleInputView implements InputView {
     @Override
     public ParticipantsRequest readParticipants() {
-        final String SEPARATOR = ",";
         System.out.println(InputMessage.PARTICIPANTS.message());
-        List<String> carNames = Arrays.stream(Console.readLine().split(SEPARATOR)).toList();
+        List<String> carNames = Arrays.stream(Console.readLine().split(ViewConstant.PARTICIPANTS_SEPARATOR.value()))
+                .toList();
         validateDuplicated(carNames);
         return ParticipantsRequest.of(carNames);
     }
